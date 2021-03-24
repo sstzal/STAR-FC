@@ -102,121 +102,17 @@ BODY {
 <center><a href="images/res2.png">
 <img src="images/res2.png" width="300"></img></href></a><br></center>
 <br>
-	
-<!-- <h1 align='center'>Online Demo</h1>
-<p>To run the demo, you can either use the default images or upload your own image. Please do the following steps.</p>
-<ol>
-  <li>If you use the default images, simply click on one of <b>Image</b> buttons.</li>
-  <li>If you choose to upload your own image, please first click <b>Choose File</b> then click <b>Upload</b>. Then plase draw a rectangle to cover the head region over the image. Simply left-click the mouse, drag, and release.</li>  
-  <li>Specify the desired rotation angles by scrolling the bars.</li>
-  <li>Click on <b>Rotate</b>. The result should appear on the right.</li>
-</ol>
-
-<form oninput="pitch_result.value=parseInt(pitch.value);yaw_result.value=parseInt(yaw.value);roll_result.value=parseInt(roll.value)">
-  <div class="slidecontainer">
-    <input type="range" min="-30" max="30" value="0" class="slider" id="pitch" oninput='changePitch();'>  
-     pitch:  <output name="pitch_result" for="pitch">0</output>  
-  </div>
-
-  <div class="slidecontainer">
-    <input type="range" min="-30" max="30" value="0" class="slider" id="yaw" oninput='changeYaw();'>  
-     yaw:  <output name="yaw_result" for="yaw">0</output>  
-  </div>
-
-  <div class="slidecontainer">
-    <input type="range" min="-30" max="30" value="0" class="slider" id="roll" oninput='changeRoll();'>  
-     roll:  <output name="roll_result" for="roll">0</output>  
-  </div>
-</form>
-
-
-<form action='#' onsubmit="return false;">
-    <input type='button' class="w3-button w3-gray" id='exp_img1' value='Image 1' onclick='displayImage(0);' />
-    <input type='button' class="w3-button w3-gray" id='exp_img2' value='Image 2' onclick='displayImage(1);' />
-    <input type='button' class="w3-button w3-gray" id='exp_img3' value='Image 3' onclick='displayImage(2);' />
-    <input type='button' class="w3-button w3-gray" id='exp_img4' value='Image 4' onclick='displayImage(3);' />
-    <input type='button' class="w3-button w3-gray" id='exp_img5' value='Image 5' onclick='displayImage(4);' />
-    <input type='button' class="w3-button w3-gray" id='exp_img6' value='Image 6' onclick='displayImage(5);' />
-    <input type='button' class="w3-button w3-gray" id='exp_img7' value='Image 7' onclick='displayImage(6);' />
-    <input type='button' class="w3-button w3-gray" id='exp_img8' value='Image 8' onclick='displayImage(7);' />   
-    <button id="mine2others" class="w3-button w3-red" style="background-color:lightgreen">Rotate</button>    
-</form>
-
-<form action='#' onsubmit="return false;">     
-    <input type='file' class="w3-button w3-red" id='imgfile' />
-    <input type='button' class="w3-button w3-yellow" id='btnLoad' value='Upload' style="background-color:yellow" onclick='loadImage();' />    
-</form>
-  <p class="w3-gray">By uploading a file, you are agreeing to this service <a href="term.txt">Terms and Conditions</a>. See our <a href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>.</p>
-  <canvas id="viewport_default"></canvas>
-  <canvas id="output_default"></canvas>
-  <canvas id="viewport"></canvas>
-  <canvas id="output"></canvas>
-  <script src="face_redirection.js"> </script> -->
-
-
-<h1 align='center'>Video Reconstruction</h1>
-<table border="0" cellspacing="10" cellpadding="0">
-  <tr>
-    <td align="center" valign="middle">
-    <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/xqJ2tSL2mHs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-   </td>
-   <td align="center" valign="middle">
-    <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/tDQ_6cO4qSc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-   </td>
-    </tr>  
-</table>
-<p>&nbsp;</p>
-
-
-<h1 align='center'>Head Rotation</h1>
-<table border="0" cellspacing="10" cellpadding="0">
-  <tr>
-    <td align="center" valign="middle">
-    <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/dGY8NbG11Ng" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-   </td>
-   <td align="center" valign="middle">
-    <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/fjzobpA0Sgs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-   </td>
-    </tr>  
-</table>
-<p>&nbsp;</p>
-
-<h1 align='center'>Face Frontalization</h1>
-<table border="0" cellspacing="10" cellpadding="0">
-  <tr>
-    <td align="center" valign="middle">
-    <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/OFStV3VRgAI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-   </td>
-   <td align="center" valign="middle">
-    <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/7QQ7t2z_sfI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-   </td>
-    </tr>  
-</table>
-<p>&nbsp;</p>
-
-
-<h1 align='center'>Motion Transfer</h1>
-<table border="0" cellspacing="10" cellpadding="0">
-  <tr>
-    <td align="center" valign="middle">
-    <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/lSLsiEmfEtk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-   </td>
-   <td align="center" valign="middle">
-    <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/wOc4PQCJGXg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
-   </td>
-    </tr>  
-</table>
-<p>&nbsp;</p>
 
 
 <h2>Citation</h2>
 <p>If you find this useful for your research, please use the following.<br>
-@inproceedings{wang2021facevid2vid,<br>
-  &emsp;&emsp;title={One-Shot Free-View Neural Talking-Head Synthesis for Video Conferencing},<br>
-  &emsp;&emsp;author={Ting-Chun Wang and Arun Mallya and Ming-Yu Liu}, <br>
-  &emsp;&emsp;booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition}, <br>
-  &emsp;&emsp;year={2021} <br>
+@inproceedings{shen2021starfc,<br>
+   &emsp;&emsp;author={Shen, Shuai and Li, Wanhua and Zhu, Zheng and Huan, Guan and Du, Dalong and Lu, Jiwen and Zhou, Jie},<br>
+   &emsp;&emsp;title={Structure-Aware Face Clustering on a Large-Scale Graph with 10^7 Nodes},<br>
+   &emsp;&emsp;booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},<br>
+   &emsp;&emsp;year={2021},
 }</p>
+
 
 <div style="display:none">
 <!-- GoStats JavaScript Based Code -->
