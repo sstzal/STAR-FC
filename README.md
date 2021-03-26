@@ -8,7 +8,7 @@ This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Cl
  - faiss
 
 ## Hardware ##
-
+:fairy:
 
 - 24G TITAN RTX
 - 48 core Intel Xeon CPU E5-2650-v4@2.20GHz processor
