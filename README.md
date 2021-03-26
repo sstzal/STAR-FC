@@ -59,7 +59,12 @@ Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algori
 
     cd STAR-FC
     python test_final.py
-    
+
+
+## Acknowledgement ##
+This code is based on the publicly available face clustering codebase [https://github.com/yl-1993/learn-to-cluster](https://github.com/yl-1993/learn-to-cluster).
+
+
 ## Citation ##
 Please cite the following paper if you use this repository in your reseach.
 
