@@ -59,3 +59,15 @@ Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algori
 
     cd STAR-FC
     python test_final.py
+    
+## Citation ##
+Please cite the following paper if you use this repository in your reseach.
+
+```
+@inproceedings{shen2021starfc,
+   author={Shen, Shuai and Li, Wanhua and Zhu, Zheng and Huan, Guan and Du, Dalong and Lu, Jiwen and Zhou, Jie},
+   title={Structure-Aware Face Clustering on a Large-Scale Graph with 10^7 Nodes},
+   booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+   year={2021}
+}
+```
