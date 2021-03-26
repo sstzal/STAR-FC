@@ -2,7 +2,7 @@
 This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Clustering on a Large-Scale Graph with 10^7 Nodes". 
 
 ## Requirements ##
-
+:information_desk_person:
  - Python = 3.6 
  - Pytorch = 1.2.0
  - faiss
