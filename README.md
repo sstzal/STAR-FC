@@ -6,7 +6,6 @@ This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Cl
  - Python = 3.6 
  - Pytorch = 1.2.0
  - faiss
- - More details please refer to `requirements.txt`
 
 ## Hardware ##
 
