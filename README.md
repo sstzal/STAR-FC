@@ -14,7 +14,7 @@ This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Cl
 - 48 core Intel Xeon CPU E5-2650-v4@2.20GHz processor
 
 ## Datasets ##
-
+:cake: 
     cd STAR-FC
 
 Create a new folder for training data:
@@ -42,11 +42,12 @@ To run the code, please download the refined MS1M dataset and partition it into 
  We have used the data from: [https://github.com/yl-1993/learn-to-cluster](https://github.com/yl-1993/learn-to-cluster)
 
 ## Model ##
+:candy:
 Put the pretrained models `Backbone.pth` and `Head.pth` in the `./pretrained_model`.
 Our trained models will come soon.
 
 ## Training ##
-
+:shamrock:
 Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algorithm as follows:
 
     cd STAR-FC
@@ -54,7 +55,7 @@ Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algori
 
 
 ## Testing ##
-
+:cactus:
 Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algorithm as follows:
 
     cd STAR-FC
@@ -62,6 +63,7 @@ Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algori
 
 
 ## Acknowledgement ##
+:cupcake:
 This code is based on the publicly available face clustering codebase [https://github.com/yl-1993/learn-to-cluster](https://github.com/yl-1993/learn-to-cluster).
 
 
