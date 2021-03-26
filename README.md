@@ -21,7 +21,7 @@ Create a new folder for training data:
 
     mkdir data
 
-To run the code, please download the refined MS1M dataset and partition it into 10 splits, then construct the data directory as follows: (Since the supplementary material is limited to less than 100MB, we can not submit these data.)
+To run the code, please download the refined MS1M dataset and partition it into 10 splits, then construct the data directory as follows:
 
     |——data
        |——features
@@ -39,6 +39,7 @@ To run the code, please download the refined MS1M dataset and partition it into 
           |——part1_test/faiss_k_80.npz
           |——...
           |——part9_test/faiss_k_80.npz
+ We have used the data from: [https://github.com/yl-1993/learn-to-cluster](https://github.com/yl-1993/learn-to-cluster)
 
 ## Model ##
 The pretrained model `Backbone.pth` and `Head.pth` is available in `./pretrained_model`.
