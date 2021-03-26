@@ -1,5 +1,5 @@
 # STAR-FC #
-This code is the implementation for the proposed STAR-FC. 
+This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Clustering on a Large-Scale Graph with 10^7 Nodes". 
 
 ## Requirements ##
 
