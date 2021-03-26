@@ -42,7 +42,7 @@ To run the code, please download the refined MS1M dataset and partition it into 
  We have used the data from: [https://github.com/yl-1993/learn-to-cluster](https://github.com/yl-1993/learn-to-cluster)
 
 ## Model ##
-The pretrained model `Backbone.pth` and `Head.pth` is available in `./pretrained_model`.
+Put the pretrained model `Backbone.pth` and `Head.pth` in the `./pretrained_model`.
 
 ## Training ##
 
