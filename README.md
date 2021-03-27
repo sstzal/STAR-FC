@@ -1,20 +1,20 @@
 # STAR-FC #
 This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Clustering on a Large-Scale Graph with 10^7 Nodes":star2::star2:. 
 
-## :information_desk_person:Requirements ##
+## :mortar_board:Requirements ##
 
  - Python = 3.6 
  - Pytorch = 1.2.0
  - faiss
 
-## Hardware ##
-:fairy:
+## :fairy:Hardware ##
+
+The hardware we used in this work is as follows:
 
 - 24G TITAN RTX
 - 48 core Intel Xeon CPU E5-2650-v4@2.20GHz processor
 
-## Datasets ##
-:cake: 
+## :cake:Datasets ##
 
     cd STAR-FC
 
@@ -42,14 +42,12 @@ To run the code, please download the refined MS1M dataset and partition it into 
           |——part9_test/faiss_k_80.npz
  We have used the data from: [https://github.com/yl-1993/learn-to-cluster](https://github.com/yl-1993/learn-to-cluster)
 
-## Model ##
-:candy:
+## :candy:Model ##
 
 Put the pretrained models `Backbone.pth` and `Head.pth` in the `./pretrained_model`.
 Our trained models will come soon.
 
-## Training ##
-:shamrock:
+## :shamrock:Training ##
 
 Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algorithm as follows:
 
@@ -57,8 +55,7 @@ Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algori
     sh scripts/train_gcn_ms1m.sh
 
 
-## Testing ##
-:cactus:
+## :cactus:Testing ##
 
 Adjust the configuration in `./src/configs/cfg_gcn_ms1m.py`, then run the algorithm as follows:
 
