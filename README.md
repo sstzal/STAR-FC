@@ -1,7 +1,7 @@
 # STAR-FC #
 This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Clustering on a Large-Scale Graph with 10^7 Nodes":star2::star2:. 
 
-:information_desk_person:## Requirements ##
+## :information_desk_person:Requirements ##
 
  - Python = 3.6 
  - Pytorch = 1.2.0
