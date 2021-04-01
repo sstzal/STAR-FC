@@ -170,18 +170,18 @@ def train_gcn(model, cfg, logger):
                 knn_prefix = os.path.join("./data/rebuild_knn")
                 if not os.path.exists(knn_prefix):
                     os.makedirs(knn_prefix)
-                if os.path.exists(os.path.join(knn_prefix, 'faiss_k_80.npz')):
-                    os.remove(os.path.join(knn_prefix, 'faiss_k_80.npz'))
-                if os.path.exists(os.path.join(knn_prefix, 'faiss_k_80.index')):
-                    os.remove(os.path.join(knn_prefix, 'faiss_k_80.index'))
+                if os.path.exists(os.path.join(knn_prefix, 'faiss_k_%d.npz' % cfg.knn)):
+                    os.remove(os.path.join(knn_prefix, 'faiss_k_%d.npz' % cfg.knn))
+                if os.path.exists(os.path.join(knn_prefix, 'faiss_k_%d.index' % cfg.knn)):
+                    os.remove(os.path.join(knn_prefix, 'faiss_k_%d.index' % cfg.knn))
 
                 knns = build_knns(knn_prefix,
                                   #l2norm(feature.clone().detach().cpu().numpy()),
                                   l2norm(feature.numpy()),
-                                  "faiss",
-                                  80,
+                                  cfg.knn_method,  # "faiss"
+                                  cfg.knn,  # 80
                                   is_rebuild=True)
-                batch_adj = fast_knns2spmat(knns, 80, 0, use_sim=True)
+                batch_adj = fast_knns2spmat(knns, cfg.knn, 0, use_sim=True)
                 batch_adj = build_symmetric_adj(batch_adj, self_loop=True)
                 batch_adj = row_normalize(batch_adj)
                 batch_adj = sparse_mx_to_torch_sparse_tensor(batch_adj, return_idx=False)
