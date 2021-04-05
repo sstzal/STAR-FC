@@ -29,13 +29,13 @@ To run the code, please download the refined MS1M dataset and partition it into 
           |——part0_train.bin
           |——part1_test.bin
           |——...
-    	  |——part9_test.bin
-        ——labels
+          |——part9_test.bin
+       |——labels
           |——part0_train.meta
           |——part1_test.meta
           |——...
           |——part9_test.meta
-        ——knns
+       |——knns
           |——part0_train/faiss_k_80.npz
           |——part1_test/faiss_k_80.npz
           |——...
