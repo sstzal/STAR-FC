@@ -38,14 +38,15 @@ class GCNDataset(object):
                 self.features = l2norm(self.features)
             if self.inst_num == -1:
                 self.inst_num = self.features.shape[0]
-            self.size = 1 # take the entire graph as input
+            self.size = 1  # take the entire graph as input
 
         with Timer('Compute center feature'):
             self.center_fea = np.zeros((self.cls_num, self.features.shape[1]))
+            lbs = list(self.lb2idxs.keys())  # in case of uncontinuous ids
             for i in range(self.cls_num):
-                self.center_fea[i] = np.mean(self.features[self.lb2idxs[i]],0)
+                _id = lbs[i]
+                self.center_fea[i] = np.mean(self.features[self.lb2idxs[_id]], 0)
             self.center_fea = l2norm(self.center_fea)
-
 
         with Timer('read knn graph'):
             if os.path.isfile(knn_graph_path):
@@ -62,8 +63,8 @@ class GCNDataset(object):
 
             # build symmetric adjacency matrix
             adj = build_symmetric_adj(adj, self_loop=True)
-            #print('adj before norm')
-            #print(adj)
+            # print('adj before norm')
+            # print(adj)
             adj = row_normalize(adj)
             if self.save_decomposed_adj:
                 adj = sparse_mx_to_indices_values(adj)
