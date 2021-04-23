@@ -45,7 +45,7 @@ To run the code, please download the refined MS1M dataset and partition it into 
 ## :candy:Model ##
 
 Put the pretrained models `Backbone.pth` and `Head.pth` in the `./pretrained_model`.
-Our trained models will come soon. Recently, some people ask for the pretrained model. I have't sorted out these models carefully (Maybe early June). However, to help research, I will release a model and you can found it in this link:[https://cloud.tsinghua.edu.cn/d/cbd04a98b7d148dbae9e/](https://cloud.tsinghua.edu.cn/d/cbd04a98b7d148dbae9e/).
+Our trained models will come soon. Recently, some people ask for the pretrained model. I have't sorted out these models carefully (Maybe early June). However, to help research, I will release a model and you can found it in this link: [https://cloud.tsinghua.edu.cn/d/cbd04a98b7d148dbae9e/](https://cloud.tsinghua.edu.cn/d/cbd04a98b7d148dbae9e/).
 
 ## :shamrock:Training ##
 
