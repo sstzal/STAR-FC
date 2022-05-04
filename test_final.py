@@ -139,6 +139,17 @@ if flag == 1:
 								id2 = np.array([id2[idx].tolist()])
 								edges.extend(np.concatenate([id1, id2], 0).transpose().tolist())
 								#print('patch id:',i)
+							id1 = pair_a[(i+1) * patch_size:]
+							id2 = pair_b[(i+1) * patch_size:]
+							score_ = HEAD_test1(output_feature[id1],output_feature[id2])
+							score_ = np.array(score_)
+							idx = np.where(score_ > threshold1)[0].tolist()
+							#score.extend(score_[idx].tolist())
+							id1 = np.array(id1)
+							id2 = np.array(id2)
+							id1 = np.array([id1[idx].tolist()])
+							id2 = np.array([id2[idx].tolist()])
+							edges.extend(np.concatenate([id1, id2], 0).transpose().tolist())
 
 						value=[1]*len(edges)
 						edges=np.array(edges)
