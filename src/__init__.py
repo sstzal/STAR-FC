@@ -1,8 +1,10 @@
 from .train_gcn import train_gcn
+from .train_gcn_hierarchical import train_gcn_hierarchical
 
 
 __factory__ = {
     'train_gcn': train_gcn,
+    'train_gcn_hierarchical': train_gcn_hierarchical,
 }
 
 
