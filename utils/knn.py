@@ -13,7 +13,7 @@ from .faiss_search import faiss_search_knn
 __all__ = [
     'knn_brute_force', 'knn_hnsw', 'knn_faiss', 'knn_faiss_gpu', 'knns2spmat',
     'fast_knns2spmat', 'knns2sub_spmat', 'build_knns', 'filter_knns',
-    'knns2ordered_nbrs'
+    'knns2ordered_nbrs', 'build_knns_dynamic'
 ]
 
 
@@ -406,6 +406,55 @@ class knn_faiss_gpu(knn):
                               np.array(dist, dtype=np.float32))
                              for nbr, dist in zip(nbrs, dists)]
 
+                
+def build_knns_dynamic(knn_prefix,
+               feats,
+               knn_method,
+               k, k1, k2,
+               num_process=4,
+               is_rebuild=False,
+               feat_create_time=None, save_knn=True):
+    knn_prefix = os.path.join(knn_prefix, '{}_k_{}'.format(knn_method, k))
+    mkdir_if_no_exists(knn_prefix)
+    knn_path = knn_prefix + '.npz'
+    if os.path.isfile(knn_path) and not is_rebuild and feat_create_time is not None:
+        knn_create_time = os.path.getmtime(knn_path)
+        if knn_create_time <= feat_create_time:
+            print('[warn] knn is created before feats ({} vs {})'.format(
+                format_time(knn_create_time), format_time(feat_create_time)))
+            is_rebuild = True
+    if not os.path.isfile(knn_path) or is_rebuild:
+        index_path = knn_prefix + '.index'
+    #with Timer('build index'):
+        if knn_method == 'hnsw':
+            index = knn_hnsw(feats, k, index_path)
+        elif knn_method == 'faiss':
+            index = knn_faiss_dynamic(feats,
+                              k, k1, k2,
+                              index_path,
+                              omp_num_threads=num_process,
+                              rebuild_index=True)
+        elif knn_method == 'faiss_gpu':
+            index = knn_faiss_gpu(feats,
+                                  k,
+                                  index_path,
+                                  num_process=num_process)
+        else:
+            raise KeyError(
+                'Only support hnsw and faiss currently ({}).'.format(
+                    knn_method))
+        knns1, knns2, knns3, knns4, knns5 = index.get_knns()
+        #knns = index.get_knns()
+        if save_knn is True:
+            with Timer('dump knns to {}'.format(knn_path)):
+                dump_data(knn_path, knns1, force=True)
+    else:
+        print('read knn from {}'.format(knn_path))
+        knns = load_data(knn_path)
+    return knns1, knns2, knns3, knns4, knns5
+    #return knns
+
+                
 
 if __name__ == '__main__':
     from utils import l2norm
