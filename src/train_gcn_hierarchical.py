@@ -9,7 +9,7 @@ from utils import sparse_mx_to_torch_sparse_tensor, build_knns,fast_knns2spmat,b
 import logging
 import numpy as np
 import torch.optim as optim
-from src.models.gcn_v import GCN_V,HEAD, HEAD_cat, HEAD_test, select_encoder, Distance_learner
+from src.models.gcn import GCN_V,HEAD, HEAD_cat, HEAD_test, select_encoder, Distance_learner
 import datetime
 import os
 import linecache
