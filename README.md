@@ -7,12 +7,12 @@ An extended version “STAR-FC: Structure-Aware Face Clustering on Ultra-Large-S
 
 The training and Inference processes are as following:
 
- - For trainign, adjust the configuration in `./src/configs/cfg_gcn_ms1m_hierarchical.py`, then run the algorithm as follows:
+For trainign, adjust the configuration in `./src/configs/cfg_gcn_ms1m_hierarchical.py`, then run the algorithm as follows:
 
     cd STAR-FC
     sh scripts/train_gcn_ms1m_hierarchical.sh
 
- - For testing, adjust the configuration in `./src/configs/cfg_gcn_ms1m_hierarchical.py`, then run the algorithm as follows:
+For testing, adjust the configuration in `./src/configs/cfg_gcn_ms1m_hierarchical.py`, then run the algorithm as follows:
 
     cd STAR-FC
     python test_final2.py
