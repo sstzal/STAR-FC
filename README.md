@@ -3,7 +3,7 @@ This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Cl
 
 ## :sunflower:News ##
 
-An extended version is proposed for ultra-large-scale face clustering with hierarchical GCN training, whcih boosts the face clustering performance greatly!
+An extended version “STAR-FC: Structure-Aware Face Clustering on Ultra-Large-Scale Graphs” is proposed for face clustering on ultra-large-scale graphs with hierarchical GCN training, whcih can boost the face clustering performance from 91.97 to 93.21 F_{p} on standard partial MS1M within 312s!
 
 The training and Inference processes are as following:
 
