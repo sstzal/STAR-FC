@@ -1,4 +1,4 @@
-cfg_name=cfg_gcn_ms1m
+cfg_name=cfg_gcn_ms1m_hierarchical
 config=src/configs/$cfg_name.py
 
 export PYTHONPATH=.
