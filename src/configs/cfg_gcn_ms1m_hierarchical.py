@@ -43,7 +43,7 @@ test_data = dict(feat_path=osp.join(prefix, 'features','{}.bin'.format(test_name
                  eval_interim = False)
 
 # model
-model = dict(type='gcn',
+model = dict(type='gcn_hierarchical',
              kwargs=dict(feature_dim=256, nhid=512, nclass=1, dropout=0.))
 
 # training args
