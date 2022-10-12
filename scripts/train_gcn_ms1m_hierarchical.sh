@@ -6,6 +6,6 @@ export PYTHONPATH=.
 # train
 python src/main.py \
     --config $config \
-    --phase 'train_hierarchical' \
+    --phase 'train' \
     --k_num2 $1 \
     --k_num3 $2
