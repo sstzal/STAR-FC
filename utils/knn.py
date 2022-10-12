@@ -406,6 +406,96 @@ class knn_faiss_gpu(knn):
                               np.array(dist, dtype=np.float32))
                              for nbr, dist in zip(nbrs, dists)]
 
+class knn_faiss_dynamic(knn_dynamic):
+    def __init__(self,
+                 feats,
+                 k, k1, k2,
+                 index_path='',
+                 index_key='',
+                 nprobe=128,
+                 omp_num_threads=None,
+                 rebuild_index=True,
+                 verbose=True,
+                 **kwargs):
+
+        if omp_num_threads is not None:
+            faiss.omp_set_num_threads(omp_num_threads)
+        self.verbose = verbose
+
+        if index_path != '' and not rebuild_index and os.path.exists(index_path):
+            print('[faiss] read index from {}'.format(index_path))
+            index = faiss.read_index(index_path)
+        else:
+            feats = feats.astype('float32')
+            size, dim = feats.shape
+            #index = faiss.IndexFlatIP(dim)
+
+            #add for gpu speedup
+            cpu_index = faiss.IndexFlatIP(dim)
+            flat_config = faiss.GpuMultipleClonerOptions()
+            flat_config.useFloat16 = True
+            flat_config.useFloat16Accumulator = True
+            flat_config.shared = True
+            gpus=[1]
+            index = faiss.index_cpu_to_gpus_list(cpu_index, flat_config, gpus)
+
+
+            #add gpu for speedup
+            #ngpus = faiss.get_num_gpus()
+            #print("number of GPUs:", ngpus)
+            #index = faiss.index_cpu_to_all_gpus(  # build the index
+            #    cpu_index)
+            #res = faiss.StandardGpuResources()
+            #index = faiss.index_cpu_to_gpu(res, 0, index)
+            #cpu_index = faiss.IndexFlatIP(dim)
+            #flat_config = faiss.GpuMultipleClonerOptions()
+            #gpus = [0]
+            #index = faiss.index_cpu_to_gpus_list(cpu_index, flat_config, gpus)
+            if index_key != '':
+                assert index_key.find(
+                    'HNSW') < 0, 'HNSW returns distances insted of sims'
+                metric = faiss.METRIC_INNER_PRODUCT
+                nlist = min(4096, 8 * round(math.sqrt(size)))
+                if index_key == 'IVF':
+                    quantizer = index
+                    index = faiss.IndexIVFFlat(quantizer, dim, nlist,
+                                               metric)
+                else:
+                    index = faiss.index_factory(dim, index_key, metric)
+                if index_key.find('Flat') < 0:
+                    assert not index.is_trained
+                index.train(feats)
+                index.nprobe = min(nprobe, nlist)
+                assert index.is_trained
+                print('nlist: {}, nprobe: {}'.format(nlist, nprobe))
+            index.add(feats)
+            #if index_path != '':
+                #print('[faiss] save index to {}'.format(index_path))
+                #mkdir_if_no_exists(index_path)
+                #index = faiss.index_gpu_to_cpu(index)
+                #faiss.write_index(index, index_path)
+        knn_ofn = index_path + '.npz'
+        if os.path.exists(knn_ofn):
+            print('[faiss] read knns from {}'.format(knn_ofn))
+            self.knns = np.load(knn_ofn)['data']
+        else:
+            sims, nbrs = index.search(feats, k=k)
+            self.knns1 = [(np.array(nbr, dtype=np.int32),
+                          1 - np.minimum(np.maximum(np.array(sim, dtype=np.float32),0),1))
+                         for nbr, sim in zip(nbrs[:, 0:-(2*k1)], sims[:, 0:-(2*k1)])]
+            self.knns2 = [(np.array(nbr, dtype=np.int32),
+                          1 - np.minimum(np.maximum(np.array(sim, dtype=np.float32),0),1))
+                         for nbr, sim in zip(nbrs[:, 0:-(k1+k2)], sims[:, 0:-(k1+k2)])]
+            self.knns3 = [(np.array(nbr, dtype=np.int32),
+                          1 - np.minimum(np.maximum(np.array(sim, dtype=np.float32),0),1))
+                         for nbr, sim in zip(nbrs[:, 0:-k1], sims[:, 0:-k1])]
+            self.knns4 = [(np.array(nbr, dtype=np.int32),
+                          1 - np.minimum(np.maximum(np.array(sim, dtype=np.float32),0),1))
+                         for nbr, sim in zip(nbrs, sims)]
+            self.knns5 = [(np.array(nbr, dtype=np.int32),
+                          1 - np.minimum(np.maximum(np.array(sim, dtype=np.float32),0),1))
+                         for nbr, sim in zip(nbrs[:, 0:-(k1-k2)], sims[:, 0:-(k1-k2)])]
+                
                 
 def build_knns_dynamic(knn_prefix,
                feats,
