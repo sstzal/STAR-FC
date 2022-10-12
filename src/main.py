@@ -37,6 +37,8 @@ def parse_args():
     parser.add_argument('--save_output', action='store_true', default=False)
     parser.add_argument('--no_cuda', action='store_true', default=False)
     parser.add_argument('--force', action='store_true', default=False)
+    parser.add_argument('--k_num2', type=str, default='60')
+    parser.add_argument('--k_num3', type=str, default='100')
     args = parser.parse_args()
 
     return args
@@ -45,6 +47,11 @@ def parse_args():
 def main():
     args = parse_args()
     cfg = Config.fromfile(args.config)
+    #add
+    k_num2 = args.k_num2
+    cfg.k_num2 = int(k_num2)
+    k_num3 = args.k_num3
+    cfg.k_num3 = int(k_num3)
 
     # set cuda
     cfg.cuda = not args.no_cuda and torch.cuda.is_available()
