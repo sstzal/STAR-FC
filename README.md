@@ -1,9 +1,9 @@
 # STAR-FC #
-This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Clustering on a Large-Scale Graph with 10^7 Nodes":star2::star2:. 
+This code is the implementation for the CVPR 2021 paper "Structure-Aware Face Clustering on a Large-Scale Graph with 10^7 Nodes", and the extended journal version "STAR-FC: Structure-Aware Face Clustering on Ultra-Large-Scale Graphs". :star2::star2:. 
 
 ## :sunflower:News ##
 
-An extended version “STAR-FC: Structure-Aware Face Clustering on Ultra-Large-Scale Graphs” is proposed for face clustering on ultra-large-scale graphs with hierarchical GCN training, whcih can boost the face clustering performance from 91.97 to 93.21 in terms of pairwise F-score on standard partial MS1M within 312s!
+An extended version "STAR-FC: Structure-Aware Face Clustering on Ultra-Large-Scale Graphs" is proposed for face clustering on ultra-large-scale graphs with hierarchical GCN training, whcih can boost the face clustering performance from 91.97 to 93.21 in terms of pairwise F-score on standard partial MS1M within 312s!
 
 The training and Inference processes are as following:
 
