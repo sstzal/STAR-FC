@@ -2,6 +2,7 @@ from .gcn import gcn
 
 __factory__ = {
     'gcn': gcn,
+    'gcn_hierarchical': gcn,
 }
 
 
