@@ -260,7 +260,45 @@ class knn():
                 th_knns = [self.filter_by_th(i) for i in range(tot)]
             return th_knns
 
+        
+class knn_dynamic():
+    def __init__(self, feats, k, index_path='', verbose=True):
+        pass
 
+    def filter_by_th(self, i):
+        th_nbrs = []
+        th_dists = []
+        nbrs, dists = self.knns[i]
+        for n, dist in zip(nbrs, dists):
+            if 1 - dist < self.th:
+                continue
+            th_nbrs.append(n)
+            th_dists.append(dist)
+        th_nbrs = np.array(th_nbrs)
+        th_dists = np.array(th_dists)
+        return (th_nbrs, th_dists)
+
+    def get_knns(self, th=None):
+        if th is None or th <= 0.:
+            return self.knns1, self.knns2, self.knns3, self.knns4, self.knns5
+        # TODO: optimize the filtering process by numpy
+        # nproc = mp.cpu_count()
+        nproc = 1
+        with Timer('filter edges by th {} (CPU={})'.format(th, nproc),
+                   self.verbose):
+            self.th = th
+            self.th_knns = []
+            tot = len(self.knns)
+            if nproc > 1:
+                pool = mp.Pool(nproc)
+                th_knns = list(
+                    tqdm(pool.imap(self.filter_by_th, range(tot)), total=tot))
+                pool.close()
+            else:
+                th_knns = [self.filter_by_th(i) for i in range(tot)]
+            return th_knns
+
+        
 class knn_brute_force(knn):
     def __init__(self, feats, k, index_path='', verbose=True):
         self.verbose = verbose
